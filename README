@@ -1,0 +1,9 @@
+These are my configuration files which I find usefull to have. These are provided as is, feel free to use them, but
+expect no support, or even expect them to work for you.
+
+Contents:
+screenrc - configuration for screen
+vimrc    - configuration for vim
+place_in_homedir/.* configuration files as they are to be read by the programs. Expect the dotfiles dir to be present
+
+

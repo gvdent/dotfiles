@@ -1,0 +1,5 @@
+escape ^oO
+hardstatus string "%{.rW}%-w%{.bW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+hardstatus on
+hardstatus alwayslastline
+shell /bin/bash
