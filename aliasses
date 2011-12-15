@@ -1,0 +1,4 @@
+alias gs='git status'
+alias gp='git add --patch'
+alias gc='git commit'
+alias ga='git add'

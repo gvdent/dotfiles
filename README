@@ -5,5 +5,5 @@ Contents:
 screenrc - configuration for screen
 vimrc    - configuration for vim
 place_in_homedir/.* configuration files as they are to be read by the programs. Expect the dotfiles dir to be present
-
+aliasses - frequently used bash aliasses. Place them in your bashrc/profile/.. whatever you fancy
 
