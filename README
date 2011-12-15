@@ -2,8 +2,8 @@ These are my configuration files which I find usefull to have. These are provide
 expect no support, or even expect them to work for you.
 
 Contents:
-screenrc - configuration for screen
-vimrc    - configuration for vim
-place_in_homedir/.* configuration files as they are to be read by the programs. Expect the dotfiles dir to be present
-aliasses - frequently used bash aliasses. Place them in your bashrc/profile/.. whatever you fancy
+screenrc  - configuration for screen
+vimrc     - configuration for vim
+aliasses  - frequently used bash aliasses. Place them in your bashrc/profile/.. whatever you fancy
 
+place_in_homedir/.* configuration files as they are to be read by the programs. Expect the dotfiles dir to be present
