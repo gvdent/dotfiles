@@ -1,1 +1,1 @@
-. dotfiles/aliases
+. ~/dotfiles/aliases
