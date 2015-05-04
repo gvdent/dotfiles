@@ -2,5 +2,6 @@ alias gs='git status'
 alias gp='git add --patch'
 alias gc='git commit'
 alias ga='git add'
+alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
 
 function vif() { vi $(find | grep "$@" | head -n1 ) ; }
