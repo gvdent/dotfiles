@@ -1,10 +1,15 @@
-These are my configuration files which I find usefull to have. These are provided as is, feel free to use them, but
-expect no support, or even expect them to work for you.
+These are my configuration files which I find useful to have. These are 
+provided as is, feel free to use them, but expect no support, or even expect 
+them to work for you.
 
 Contents:
 screenrc  - configuration for screen
 vimrc     - configuration for vim
 aliases   - aliases, for sourcing in bash_aliases
-gitconfig - config for git. ln this to .gitconfig in the homedir since git doesn't allow sourcing.
+gitconfig - config for git. ln this to .gitconfig in the homedir since git 
+            doesn't allow sourcing.
 
-place_in_homedir/.* configuration files as they are to be read by the programs. Expect the dotfiles dir to be present
+place_in_homedir/.* configuration files as they are to be read by the programs.
+
+Files expect the project to be checked out to a directory called dotfiles in
+the home folder.
