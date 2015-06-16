@@ -3,3 +3,6 @@
   email = gvdent@gmail.com
 [core]
   editor = vim
+[github]
+  user = gvdent
+  token = 944c51a9a3bf917c0ffdba2ecfcca7aa
