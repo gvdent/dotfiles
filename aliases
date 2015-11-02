@@ -1,8 +1,17 @@
 alias gs='git status'
-alias gp='git add --patch'
+alias gap='git add --patch'
 alias gc='git commit'
 alias ga='git add'
 alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
+alias gp='git pull && git push'
 
 function vif() { vi $(find | grep "$@" | head -n1 ) ; }
-function lookup() { find -print0 | xargs -0 grep -s "$@" \{} ; }
+function lookup() { 
+  if [ -z ${2+x} ]; then pattern=''; else pattern=" -name $2"; fi
+
+  find -type f $pattern -print0 | xargs -0 grep -is $1 -- \{}
+}
+
+case "$TERM" in
+    screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
+esac
