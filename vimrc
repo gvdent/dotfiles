@@ -42,3 +42,5 @@ set softtabstop=2
 set expandtab
 
 " set ls=2 " always show status line. on seconds thought, this is a silly idea
+
+nnoremap <esc> :noh<return><esc>
