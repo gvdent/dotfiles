@@ -5,12 +5,37 @@ alias ga='git add'
 alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
 alias gp='git pull && git push'
 
+function grev() {
+  git diff ${1}
+  read -p "Revert? " -n 1 -r 
+  echo 
+  if [[ $REPLY =~ ^[Yy] ]]; 
+  then 
+    git checkout ${1}
+  fi
+ }
+
 function vif() { vi $(find ./ | grep "$@" | head -n1 ) ; }
 function lookup() { 
   echo "Looking for ${1} with mask: ${2}"
   if [ -z ${2+x} ]; then pattern=''; else pattern=" -name $2"; fi
 
   find ./ -type f $pattern -print0 | xargs -0 grep -is "$1" -- \{}
+}
+
+function dockerpush() {
+  name=$(grep name package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+  version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+
+  docker push sysunite/${name}:${version} 
+}
+
+function dockerize() {
+  name=$(grep name package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+  version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+
+  docker build -t sysunite/${name}:${version} .
+  git tag v${version}
 }
 
 case "$TERM" in
