@@ -24,18 +24,27 @@ function lookup() {
 }
 
 function dockerpush() {
-  name=$(grep name package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
-  version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+  setNameAndVersion
 
   docker push sysunite/${name}:${version} 
+  git tag v${version}
+}
+
+function setNameAndVersion() {
+  if [ -f "package.json" ]; then
+    name=$(grep name package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+    version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+  elif [ -f "pom.xml" ]; then
+    echo "Shoudl parse pom"
+  else
+    echo "No source for name and version found"
+  fi;
 }
 
 function dockerize() {
-  name=$(grep name package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
-  version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
+  setNameAndVersion
 
   docker build -t sysunite/${name}:${version} .
-  git tag v${version}
 }
 
 case "$TERM" in
