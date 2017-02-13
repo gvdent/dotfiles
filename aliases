@@ -23,6 +23,12 @@ function lookup() {
   find ./ -type f $pattern -print0 | xargs -0 grep -is "$1" -- \{}
 }
 
+function dockertransfer() {
+  setNameAndVersion
+
+  docker save sysunite/${name}:${version} | gzip -c | ssh ${1} docker load
+}
+
 function dockerpush() {
   setNameAndVersion
 
