@@ -24,3 +24,7 @@ if [ -e "${file}" -o -h "${file}" ]; then
 else
   ln -s gitconfig "${HOME}/.gitconfig"
 fi
+
+if [ -e "${HOME}/.zshrc" ]; then
+  echo "source ~/dotfiles/aliases" >> ${HOME}/.zshrc
+fi
