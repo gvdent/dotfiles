@@ -20,7 +20,7 @@ function lookup() {
   echo "Looking for ${1} with mask: ${2}"
   if [ -z ${2+x} ]; then pattern=''; else pattern=" -name $2"; fi
 
-  find ./ -type f $pattern -print0 | xargs -0 grep -is "$1" -- \{}
+  find ./ -type f $pattern -print0 | xargs -0 grep -is "$1" --
 }
 
 function dockertransfer() {
