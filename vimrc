@@ -18,7 +18,7 @@ set hlsearch
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+" nnoremap <C-L> :nohl<CR><C-L>
 
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
@@ -43,4 +43,25 @@ set expandtab
 
 " set ls=2 " always show status line. on seconds thought, this is a silly idea
 
-nnoremap <esc> :noh<return><esc>
+let mapleader = ","
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+nnoremap ; :
+
+" Strip all trailing whitespace from file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" Open a new vertical split
+nnoremap <leader>w <C-w>v<C-w>l
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
