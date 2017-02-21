@@ -26,7 +26,7 @@ function lookup() {
 function dockertransfer() {
   setNameAndVersion
 
-  docker save sysunite/${name}:${version} | gzip -c | ssh ${1} docker load
+  docker save sysunite/${name}:${version} | gzip -c | pv | ssh ${1} docker load
 }
 
 function dockerpush() {
