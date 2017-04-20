@@ -4,6 +4,10 @@ alias gc='git commit'
 alias ga='git add'
 alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
 alias gp='git pull && git push'
+alias fixWebcam='sudo killall VDCAssistant'
+alias cleanDockerContainers='docker rm $(docker ps -a -q --no-trunc)'
+alias cleanDockerImages='docker rmi $(docker images -q --no-trunc)'
+alias cleanGitBranches='git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches'
 
 function grev() {
   git diff ${1}
