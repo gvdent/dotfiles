@@ -55,6 +55,9 @@ set colorcolumn=85
 
 nnoremap ; :
 
+" Reload current file
+nnoremap <leader>r :edit!
+
 " Strip all trailing whitespace from file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
