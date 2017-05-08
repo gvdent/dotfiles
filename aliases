@@ -3,6 +3,7 @@ alias gap='git add --patch'
 alias gc='git commit'
 alias ga='git add'
 alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
+alias gtb="git log --pretty='%h %<(5,trunc)%an %s' --graph --all --decorate --abbrev-commit"
 alias gp='git pull && git push'
 alias ds='date +%y%m%d'
 alias fixWebcam='sudo killall VDCAssistant'
