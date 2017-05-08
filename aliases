@@ -4,10 +4,12 @@ alias gc='git commit'
 alias ga='git add'
 alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
 alias gp='git pull && git push'
+alias ds='date +%y%m%d'
 alias fixWebcam='sudo killall VDCAssistant'
 alias cleanDockerContainers='docker rm $(docker ps -a -q --no-trunc)'
 alias cleanDockerImages='docker rmi $(docker images -q --no-trunc)'
 alias cleanGitBranches='git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches'
+alias packageThisShip='D=$(pwd) && pushd /tmp/ && cp -r ${D} ./ && T=${D##*/} && rm -rf ${T}/.git && tar -czf ${T}.tgz ./${T} && rm -rf ./${T} && popd && mv /tmp/${T}.tgz ./' 
 
 function grev() {
   git diff ${1}
@@ -55,6 +57,10 @@ function dockerize() {
   setNameAndVersion
 
   docker build -t sysunite/${name}:${version} .
+}
+
+function dockerstore() {
+  docker save ${1}/${2}:${3} | gzip -c > ${2}-${3}.tgz
 }
 
 case "$TERM" in
