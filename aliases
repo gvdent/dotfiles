@@ -48,7 +48,8 @@ function setNameAndVersion() {
     name=$(grep name package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
     version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
   elif [ -f "pom.xml" ]; then
-    echo "Shoudl parse pom"
+    name=$(grep artifactId pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
+    version=$(grep '<version' pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
   else
     echo "No source for name and version found"
   fi;
