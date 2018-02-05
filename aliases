@@ -6,6 +6,7 @@ alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
 alias gtb="git log --pretty='%h %<(5,trunc)%an %s' --graph --all --decorate --abbrev-commit"
 alias gp='git pull && git push'
 alias ds='date +%y%m%d'
+alias dc='docker-compose'
 alias fixWebcam='sudo killall VDCAssistant'
 alias cleanDockerContainers='docker rm $(docker ps -a -q --no-trunc)'
 alias cleanDockerImages='docker rmi $(docker images -q --no-trunc)'
@@ -25,9 +26,9 @@ function grev() {
 function vif() { vi $(find ./ | grep "$@" | head -n1 ) ; }
 function lookup() { 
   echo "Looking for ${1} with mask: ${2}"
-  if [ -z ${2+x} ]; then pattern=''; else pattern=" -name $2"; fi
+  if [ -z ${2+x} ]; then pattern=''; else pattern=" -name '$2'"; fi
 
-  find ./ -type f $pattern -print0 | xargs -0 grep -is "$1" --
+  find . -type f $pattern -print0 | xargs -0 grep -is "$1" --
 }
 
 function dockertransfer() {
@@ -36,11 +37,17 @@ function dockertransfer() {
   docker save sysunite/${name}:${version} | gzip -c | pv | ssh ${1} docker load
 }
 
+function gittag() {
+  setNameAndVersion
+  echo "Tagging v${version} for ${name}"
+  git tag v${version}
+}
+
 function dockerpush() {
   setNameAndVersion
 
-  docker push sysunite/${name}:${version} 
-  git tag v${version}
+  docker push sysunite/${name}:${version}
+  gittag
 }
 
 function setNameAndVersion() {
@@ -51,7 +58,8 @@ function setNameAndVersion() {
     name=$(grep artifactId pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
     version=$(grep '<version' pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
   else
-    echo "No source for name and version found"
+    name=$(basename $(pwd))
+    version=$(git describe --tags | sed -e 's/^v//')
   fi;
 }
 
