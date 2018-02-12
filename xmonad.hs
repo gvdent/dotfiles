@@ -2,7 +2,6 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.EZConfig(additionalKeys)
-import XMonad.Hooks.SetWMName
 
 --
 -- -- The main function.
@@ -20,8 +19,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 --
 -- -- Main configuration, override the defaults to your liking.
 myConfig = defaultConfig { 
-  modMask = mod4Mask, -- Alledgedly this uses super instead of alt
-  startupHook = setWMName "LG3D" -- Alledgedly fixes Intellij and other swing apps
+  modMask = mod4Mask -- Alledgedly this uses super instead of alt
 } `additionalKeys`
   [
     ((0, 0x1008FF11), spawn "amixer -q sset Master 2%-")
