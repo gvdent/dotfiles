@@ -2,6 +2,8 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.StackSet as W
+import XMonad.Operations
 
 --
 -- -- The main function.
@@ -34,5 +36,8 @@ myConfig = defaultConfig {
     , ((mod4Mask .|. shiftMask, xK_Print ), spawn "scrot Pictures/window_%Y-%m-%d-%H-%M-%S.png -d 1 -u")
        -- quick lock
     , ((0,  xK_Scroll_Lock), spawn "slock")
+       -- re-tile a floating window
+    , ((mod4Mask, xK_t), withFocused $ windows . W.sink)
+
   ]
 --
