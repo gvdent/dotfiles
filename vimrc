@@ -80,5 +80,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
