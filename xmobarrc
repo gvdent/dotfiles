@@ -38,6 +38,9 @@ commands = [
 	]
 	10,
 
+
+        -- Sets the network state, under the interface-name value, so remember to
+        -- update those names in the template string as well if you change them.
 	Run Network "enp0s31f6" ["-L","0","-H","32","--normal","green","--high","red"] 10,
 	Run Network "wlp2s0" ["-L","0","-H","32","--normal","green","--high","red"] 10,
 
@@ -67,7 +70,7 @@ commands = [
 	-- To get volume information, we run a custom bash script.
 	-- This is because the built-in volume support in xmobar is disabled
 	-- in Debian and derivatives like Ubuntu.
-	--Run Com "~/bin/get-volume.sh" [] "myvolume" 10,
+	-- Run Com "~/bin/get-volume.sh" [] "myvolume" 10,
 	-- /!\ https://github.com/jaor/xmobar/issues/127
 	Run Com "/bin/bash" ["-c", "~/dotfiles/get-volume.sh"]  "myvolume" 1,
 
@@ -97,7 +100,7 @@ alignSep = "}{",
 -- Overall template for the layout of the xmobar contents. Note that
 -- space is significant and can be used to add padding.
 -- template = "%StdinReader% }{ %battery% | %cpu% | %memory% | Vol: %myvolume% <fc=#e6744c>%date%</fc> "
-template = "%StdinReader% }{ %enp2s0%%wlp3s0% | %battery% | %cpu% | %memory% | %myvolume% | Lum: %mybright% | <fc=#e6744c>%date%</fc>"
+template = "%StdinReader% }{ %enp0s31f6%%wlp2s0% | %battery% | %cpu% | %memory% | %myvolume% | Lum: %mybright% | <fc=#e6744c>%date%</fc>"
 }
 
 --Config { font = "-xos4-terminus-bold-r-normal--20-*-*-*-*-*-iso10646-1"
