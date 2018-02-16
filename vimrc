@@ -81,5 +81,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'kchmck/vim-coffee-script'
+Plug 'godlygeek/tabular'
 
 call plug#end()
