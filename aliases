@@ -77,6 +77,7 @@ case "$TERM" in
     screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
 esac
 
-alias atwork="xrandr --auto && xrandr --output DP7-8 --left-of HDMI2 && xrandr --output eDP2 --right-of HDMI2"
-alias athome="xrandr --auto && xrandr --output eDP2 --right-of HDMI2"
+#alias attauro="xrandr --auto && xrandr --output DP7-8 --left-of HDMI2 && xrandr --output eDP2 --right-of HDMI2"
+alias athome="xrandr --auto --output eDP2 --right-of HDMI2"
 alias atnone="xrandr --auto"
+alias atcroon="xrandr --auto --output eDP2 --right-of DP7-8 --output DP7-1 --rotate right --left-of DP7-8"
