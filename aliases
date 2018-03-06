@@ -11,20 +11,20 @@ alias fixWebcam='sudo killall VDCAssistant'
 alias cleanDockerContainers='docker rm $(docker ps -a -q --no-trunc)'
 alias cleanDockerImages='docker rmi $(docker images -q --no-trunc)'
 alias cleanGitBranches='git branch --merged | grep -v "master\|develop" | xargs git branch -d'
-alias packageThisShip='D=$(pwd) && pushd /tmp/ && cp -r ${D} ./ && T=${D##*/} && rm -rf ${T}/.git && tar -czf ${T}.tgz ./${T} && rm -rf ./${T} && popd && mv /tmp/${T}.tgz ./' 
+alias packageThisShip='D=$(pwd) && pushd /tmp/ && cp -r ${D} ./ && T=${D##*/} && rm -rf ${T}/.git && tar -czf ${T}.tgz ./${T} && rm -rf ./${T} && popd && mv /tmp/${T}.tgz ./'
 
 function grev() {
   git diff ${1}
-  read -p "Revert? " -n 1 -r 
-  echo 
-  if [[ $REPLY =~ ^[Yy] ]]; 
-  then 
+  read -p "Revert? " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy] ]];
+  then
     git checkout ${1}
   fi
  }
 
 function vif() { vi $(find ./ | grep "$@" | head -n1 ) ; }
-function lookup() { 
+function lookup() {
   echo "Looking for ${1} with mask: ${2}"
   if [ -z ${2+x} ]; then pattern=''; else pattern=" -name '$2'"; fi
 
