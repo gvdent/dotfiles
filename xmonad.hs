@@ -20,7 +20,7 @@ myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 --
 -- -- Main configuration, override the defaults to your liking.
-myConfig = defaultConfig { 
+myConfig = defaultConfig {
   modMask = mod4Mask -- Alledgedly this uses super instead of alt
 } `additionalKeys`
   [
@@ -31,9 +31,9 @@ myConfig = defaultConfig {
     , ((0, 0x1008FF03), spawn "xbacklight -dec 5")
        -- aptitude install scrot
        --take a screenshot of entire display
-    , ((mod4Mask , xK_Print ), spawn "scrot Pictures/screen_%Y-%m-%d-%H-%M-%S.png -d 1")
+    , ((mod4Mask , xK_Print ), spawn "filename=Pictures/screen_$(date +%Y-%m-%d-%H-%M-%S).png && scrot ${filename} -d 1 && pinta ${filename}")
        --take a screenshot of focused window
-    , ((mod4Mask .|. shiftMask, xK_Print ), spawn "scrot Pictures/window_%Y-%m-%d-%H-%M-%S.png -d 1 -u")
+    , ((mod4Mask .|. shiftMask, xK_Print ), spawn "filename=Pictures/window_$(date +%Y-%m-%d-%H-%M-%S).png && scrot ${filename} -d 1 -u && pinta ${filename}")
        -- quick lock
     , ((0,  xK_Scroll_Lock), spawn "slock")
        -- re-tile a floating window
