@@ -79,4 +79,4 @@ esac
 
 alias athome="xrandr --auto --output eDP2 --right-of HDMI2"
 alias atnone="xrandr --auto"
-alias atcroon="xrandr --auto --output eDP2 --right-of DP7-8 --output DP7-1 --rotate right --left-of DP7-8"
+alias atcroon="xrandr --auto --output DP7-8 --left-of eDP2 --output DP7-1-8 --left-of DP7-8"
