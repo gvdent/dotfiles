@@ -4,6 +4,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.StackSet as W
 import XMonad.Operations
+import XMonad.Layout.NoBorders
 
 --
 -- -- The main function.
@@ -21,7 +22,8 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 --
 -- -- Main configuration, override the defaults to your liking.
 myConfig = defaultConfig {
-  modMask = mod4Mask -- Alledgedly this uses super instead of alt
+  modMask = mod4Mask, -- Alledgedly this uses super instead of alt
+  layoutHook = smartBorders $ layoutHook defaultConfig
 } `additionalKeys`
   [
     ((0, 0x1008FF11), spawn "amixer -q sset Master 2%-")
