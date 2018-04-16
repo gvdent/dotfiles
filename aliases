@@ -21,7 +21,22 @@ function grev() {
   then
     git checkout ${1}
   fi
- }
+}
+
+function yekpost() {
+  file=_posts/$(date +%Y-%m-%d)-${1}.md
+  if [ -z ${1} ];
+  then
+    echo "Please provide a title"
+    exit(1)
+  else
+    echo "---
+layout: post
+title ${1}
+---" > ${file}
+    vi ${file}
+  fi;
+}
 
 function vif() { vi $(find ./ | grep "$@" | head -n1 ) ; }
 function lookup() {
