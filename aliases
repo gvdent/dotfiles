@@ -54,8 +54,8 @@ function dockertransfer() {
 
 function gittag() {
   setNameAndVersion
-  echo "Tagging v${version} for ${name}"
-  git tag v${version}
+  echo "Tagging ${version} for ${name}"
+  git tag ${version}
 }
 
 function dockerpush() {
