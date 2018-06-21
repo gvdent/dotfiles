@@ -24,17 +24,17 @@ function grev() {
 }
 
 function yekpost() {
-  file=_posts/$(date +%Y-%m-%d)-${1}.md
-  if [ -z ${1} ];
+  file="_posts/$(date +%Y-%m-%d)-${1// /_}.md"
+  if [ -z "${1}" ];
   then
     echo "Please provide a title"
-    exit(1)
+    return 1
   else
     echo "---
 layout: post
-title ${1}
----" > ${file}
-    vi ${file}
+title: ${1}
+---" > "$file"
+    vi "$file"
   fi;
 }
 
@@ -63,6 +63,10 @@ function dockerpush() {
 
   docker push sysunite/${name}:${version}
   gittag
+}
+
+function gsalocal() {
+  git stash apply "$(git stash list | awk -F ':' '$3~/local/ { print $1 }')"
 }
 
 function setNameAndVersion() {

@@ -99,4 +99,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'kchmck/vim-coffee-script'
 Plug 'godlygeek/tabular'
 
+command -nargs=1 Sql :w | !psql "<args>" < %:t
+command -nargs=1 SHql :w | !ssh hawaii psql "<args>" < %:t
+
 call plug#end()
