@@ -74,6 +74,7 @@ commands = [
 	-- /!\ https://github.com/jaor/xmobar/issues/127
 	Run Com "/bin/bash" ["-c", "~/dotfiles/get-volume.sh"]  "myvolume" 1,
 
+	Run Com "/bin/bash" ["-c", "bluetooth | awk '{ print $3 }'"]  "btstatus" 1,
 
 	Run Com "/bin/bash" ["-c", "echo `xbacklight -get | grep -oE '^.[0-9]{0,3}'`%"]  "mybright" 1,
 	--Run Com "~/bin/get-volume.sh" [] "vol",
@@ -100,7 +101,7 @@ alignSep = "}{",
 -- Overall template for the layout of the xmobar contents. Note that
 -- space is significant and can be used to add padding.
 -- template = "%StdinReader% }{ %battery% | %cpu% | %memory% | Vol: %myvolume% <fc=#e6744c>%date%</fc> "
-template = "%StdinReader% }{ %enp0s31f6%%wlp2s0% | %battery% | %cpu% | %memory% | %myvolume% | Lum: %mybright% | <fc=#e6744c>%date%</fc>"
+template = "%StdinReader% }{ %enp0s31f6%%wlp2s0% | %battery% | %cpu% | %memory% | %myvolume%(bt:%btstatus%) | Lum: %mybright% | <fc=#e6744c>%date%</fc>"
 }
 
 --Config { font = "-xos4-terminus-bold-r-normal--20-*-*-*-*-*-iso10646-1"
