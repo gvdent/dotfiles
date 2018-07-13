@@ -75,7 +75,10 @@ function setNameAndVersion() {
     version=$(grep version package.json | sed -e 's/.*"\(.*\)",/\1/' | head -n 1)
   elif [ -f "pom.xml" ]; then
     name=$(grep artifactId pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
-    version=$(grep '<version' pom.xml | sed -e s'/.*>\([^<]*\)<.*/\1/' | head -n 1)
+    version=$(grep '<version' pom.xml | sed -e 's/.*>\([^<]*\)<.*/\1/' | head -n 1)
+  elif [ -f "build.sbt" ]; then
+    name=$(grep 'name :=' build.sbt | sed -e 's/name := "\([^"]*\)".*/\1/')
+    version=$(grep 'version :=' build.sbt | sed -e 's/version := "\([^"]*\)".*/\1/')
   else
     name=$(basename $(pwd))
     version=$(git describe --tags | sed -e 's/^v//')
@@ -90,6 +93,14 @@ function dockerize() {
 
 function dockerstore() {
   docker save ${1}/${2}:${3} | gzip -c > ${2}-${3}.tgz
+}
+
+function loadhawaiidb() {
+  docker-compose -f ~/weaver/server/docker-compose.yml restart postgresql-connector
+  psql postgres -c "drop database \"$2\"" || true
+  psql postgres -c "create database \"$2\""
+  ssh hawaii pg_dump $1 | psql $2
+  docker-compose -f ~/weaver/server/docker-compose.yml restart weaver-server
 }
 
 case "$TERM" in
