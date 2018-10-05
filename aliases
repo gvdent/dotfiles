@@ -12,6 +12,9 @@ alias cleanDockerContainers='docker rm $(docker ps -a -q --no-trunc)'
 alias cleanDockerImages='docker rmi $(docker images -q --no-trunc)'
 alias cleanGitBranches='git branch --merged | grep -v "master\|develop" | xargs git branch -d'
 alias packageThisShip='D=$(pwd) && pushd /tmp/ && cp -r ${D} ./ && T=${D##*/} && rm -rf ${T}/.git && tar -czf ${T}.tgz ./${T} && rm -rf ./${T} && popd && mv /tmp/${T}.tgz ./'
+alias prim='screen -Dr primary || screen -S primary'
+alias sec='screen -Dr secundary || screen -S secundary'
+alias drawonscreen='echo "Its name is gromit" && gromit-mpx --key "F9"'
 
 function grev() {
   git diff ${1}
