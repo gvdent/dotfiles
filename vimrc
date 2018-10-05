@@ -93,11 +93,15 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'fatih/vim-go'
+
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular' " Alignment of text
+
+" Syntax highlighting
+Plug 'leafgarland/typescript-vim'
+Plug 'fatih/vim-go'
 Plug 'kchmck/vim-coffee-script'
-Plug 'godlygeek/tabular'
 
 command -nargs=1 Sql :w | !psql "<args>" < %:t
 command -nargs=1 SHql :w | !ssh hawaii psql "<args>" < %:t
