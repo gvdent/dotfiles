@@ -1,7 +1,6 @@
 alias gs='git status'
 alias gap='git add --patch'
 alias gc='git commit'
-alias ga='git add'
 alias gt='git log --oneline --graph --all --decorate --abbrev-commit'
 alias gtb="git log --pretty='%h %<(5,trunc)%an %s' --graph --all --decorate --abbrev-commit"
 alias gp='git pull && git push'
@@ -54,6 +53,13 @@ function dockertransfer() {
 
   docker save sysunite/${name}:${version} | gzip -c | pv | ssh ${1} docker load
 }
+
+function getGitStatusFile() {
+  gs | grep "$1" | awk '{ print $2 }'
+}
+
+function ga() { git add $(getGitStatusFile $1) }
+function grh() { git reset HEAD $(getGitStatusFile $1) }
 
 function gittag() {
   setNameAndVersion
