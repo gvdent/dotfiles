@@ -1,5 +1,5 @@
 escape ^oO
-hardstatus string "%{.rW}%-w%{.bW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+hardstatus string "%{.rW}%-w%{.bW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %c "
 hardstatus on
 hardstatus alwayslastline
 
