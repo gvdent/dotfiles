@@ -1,0 +1,1 @@
+- Fix ga alias for merges ($2 in the awk is invalid for 'both modified'
