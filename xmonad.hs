@@ -38,6 +38,8 @@ myConfig = defaultConfig {
     , ((mod4Mask .|. shiftMask, xK_Print ), spawn "filename=Pictures/window_$(date +%Y-%m-%d-%H-%M-%S).png && scrot ${filename} -d 1 -u && pinta ${filename}")
        -- quick lock
     , ((0,  xK_Scroll_Lock), spawn "slock")
+    , ((mod4Mask,  xK_x), spawn "slock")
+    , ((mod4Mask,  xK_c), spawn "filename=Pictures/window_$(date +%Y-%m-%d-%H-%M-%S).png && scrot ${filename} -d 1 -u && pinta ${filename}")
        -- re-tile a floating window
     , ((mod4Mask, xK_t), withFocused $ windows . W.sink)
 
