@@ -14,6 +14,8 @@ alias packageThisShip='D=$(pwd) && pushd /tmp/ && cp -r ${D} ./ && T=${D##*/} &&
 alias prim='screen -Dr primary || screen -S primary'
 alias sec='screen -Dr secundary || screen -S secundary'
 alias drawonscreen='echo "Its name is gromit" && gromit-mpx --key "F9"'
+alias rw='railway'
+alias clint='coffeelint -f ~/weaver/coffeescript-style-guide/coffeelint.json'
 
 function grev() {
   git diff ${1}
