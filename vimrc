@@ -106,4 +106,16 @@ Plug 'kchmck/vim-coffee-script'
 command -nargs=1 Sql :w | !psql "<args>" < %:t
 command -nargs=1 SHql :w | !ssh hawaii psql "<args>" < %:t
 
+fun! InsertHnPost ( arg ) "{{{
+  "let command='r !curl --silent "'.expand(a:arg).'" | grep storylink | sed --expression "s/.*a href=\"\([^\"]*\)\" class=\"storylink\">\([^<]*\)<.*/[\2](\1)[hn](/"'
+  let command='r !curl --silent "'.expand(a:arg).'" | grep storylink | sed --expression "s/.*a href=\"\([^\"]*\)\" class=\"storylink\">\([^<]*\)<.*/[\2](\1)[hn](/"'
+  :exe command
+  :exe 'r !echo "'.expand(a:arg).')"'
+endfunction
+
+
+"  curl https://news.ycombinator.com/item?id=17696023 | grep storylink | sed -e 's/.*a href="\([^"]*\)" class="storylink">\([^<]*\)<.*/\1 \2/'
+"command -nargs=1 Hn :r !curl --silent "<args>" | grep storylink | sed --expression='s/.*a href="\([^"]*\)" class="storylink">\([^<]*\)<.*/\1 \2/'
+command -nargs=1 Hn call InsertHnPost( '<args>' )
+
 call plug#end()
