@@ -144,5 +144,13 @@ case "$TERM" in
 esac
 
 alias athome="xrandr --auto --output eDP2 --right-of HDMI2"
-alias atnone="xrandr --auto"
-alias atcroon="xrandr --auto --output DP7-8 --left-of eDP2 --output DP7-1-8 --left-of DP7-8"
+alias atnone="xrandr --output HDMI2 --off --output DP3-1-8 --off --output DP3-8 --off --output eDP1 --mode 1600x1200 --mode 1920x1080"
+alias lsoff="xrandr --output eDP2 --off"
+alias lson="xrandr --output eDP2 --auto"
+#alias anone="xrandr --output eDP1 --mode 1920x1080 --refresh 59 --primary --fb 1920x1080"
+alias atnone2="xrandr --output eDP2 --mode 1600x1200 --mode 1920x1080"
+alias atpres="xrandr --output HDMI2 --auto --output eDP1 --off "
+alias atcroon="~/.screenlayout/croon2.sh"
+
+alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | egrep 'percentage|(time to empty)'"
+

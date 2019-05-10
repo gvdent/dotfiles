@@ -110,7 +110,8 @@ fun! InsertHnPost ( arg ) "{{{
   "let command='r !curl --silent "'.expand(a:arg).'" | grep storylink | sed --expression "s/.*a href=\"\([^\"]*\)\" class=\"storylink\">\([^<]*\)<.*/[\2](\1)[hn](/"'
   let command='r !curl --silent "'.expand(a:arg).'" | grep storylink | sed --expression "s/.*a href=\"\([^\"]*\)\" class=\"storylink\">\([^<]*\)<.*/[\2](\1)[hn](/"'
   :exe command
-  :exe 'r !echo "'.expand(a:arg).')"'
+  ":exe 'r !echo "'.expand(a:arg).')"'
+  call append(line('.'), expand(a:arg).')')
 endfunction
 
 
