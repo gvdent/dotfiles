@@ -81,9 +81,10 @@ function dockertransfer() {
 }
 
 function getGitStatusFile() {
-  gs | grep "$1" | awk '{ print $2 }'
+  gs | grep "$1" | awk '{ print $NF }'
 }
 
+function gco() { git checkout -- $(getGitStatusFile $1) }
 function ga() { git add $(getGitStatusFile $1) }
 function grh() { git reset HEAD $(getGitStatusFile $1) }
 
