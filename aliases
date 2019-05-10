@@ -42,6 +42,30 @@ title: ${1}
   fi;
 }
 
+function yekupdate() {
+  pushd ~/personal/gvdent.github.io
+  file="_microblog/$(date +%Y-%m-%d)-$RANDOM.md"
+  echo "---
+layout: microblog-post
+date: $(date +%Y-%m-%d\ %T\ %z)
+---
+" > "$file"
+  hash=$(md5sum "$file")
+  vi +4 "$file"
+  newhash=$(md5sum "$file")
+  if [[ "$hash" == "$newhash" ]];
+  then
+    echo "Not modified, removing"
+    rm "$file"
+  else
+    echo "Modified, committing"
+    git add "$file"
+    git commit -m "Added $file"
+    git push
+  fi;
+  popd
+}
+
 function vif() { vi $(find ./ | grep "$@" | head -n1 ) ; }
 function lookup() {
   echo "Looking for ${1} with mask: ${2}"
