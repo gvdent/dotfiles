@@ -143,13 +143,13 @@ case "$TERM" in
     screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
 esac
 
-alias athome="xrandr --auto --output eDP2 --right-of HDMI2"
-alias atnone="xrandr --output HDMI2 --off --output DP3-1-8 --off --output DP3-8 --off --output eDP1 --mode 1600x1200 --mode 1920x1080"
-alias lsoff="xrandr --output eDP2 --off"
-alias lson="xrandr --output eDP2 --auto"
-#alias anone="xrandr --output eDP1 --mode 1920x1080 --refresh 59 --primary --fb 1920x1080"
-alias atnone2="xrandr --output eDP2 --mode 1600x1200 --mode 1920x1080"
-alias atpres="xrandr --output HDMI2 --auto --output eDP1 --off "
+alias lscreen='xrandr | awk "/eDP/ {print \$1}"'
+alias athome="xrandr --auto --output $(lscreen) --right-of HDMI2"
+alias atnone="xrandr --output HDMI2 --off --output DP3-1-8 --off --output DP3-8 --off --output $(lscreen) --mode 1600x1200 --mode 1920x1080"
+alias lsoff="xrandr --output $(lscreen) --off"
+alias lson="xrandr --output $(lscreen) --auto"
+alias atnone2="xrandr --output $(lscreen) --mode 1600x1200 --mode 1920x1080"
+alias atpres="xrandr --output HDMI2 --auto --output $(lscreen) --off "
 alias atcroon="~/.screenlayout/croon2.sh"
 
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | egrep 'percentage|(time to empty)'"
