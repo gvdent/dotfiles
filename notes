@@ -1,0 +1,8 @@
+## Send audio to two sinks:
+
+pactl list short sinks # Shows sinks
+
+pactl load-module module-null-sink sink_name=recsink
+pactl load-module module-loopback source=recsink.monitor sink=<sinknr>
+
+From: https://unix.stackexchange.com/questions/458044/route-applications-audio-output-to-multiple-playback-devices
